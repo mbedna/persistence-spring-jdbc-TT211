@@ -13,9 +13,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ${entity.name}DAO extends GenericDAO<${entity.name}> {
+	private final static String SQL_SELECT_ALL = 
+		"$jdbc.sqlSelect";
 
 	private final static String SQL_SELECT = 
-		"$jdbc.sqlSelect";
+		"$jdbc.sqlSelectWherePK";
 
 #if ( $entity.hasAutoIncrementedKey() )
 	// NB : This entity has an auto-incremented primary key : "$entity.autoincrementedKeyAttribute.databaseName"
