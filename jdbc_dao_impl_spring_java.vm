@@ -57,7 +57,7 @@ public class ${entity.name}DAOImplSpring extends GenericDAO<${entity.name}> impl
 		"select count(*) from ${entity.databaseTable}";
 
 	private final static String SQL_COUNT = 
-		"$jdbc.sqlExists";
+		"$jdbc.sqlSelectCountWherePK";
 
     //----------------------------------------------------------------------
 	/**
