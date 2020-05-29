@@ -7,9 +7,6 @@
 ##--------------------------------------------------------------------------------------------------------
 package ${target.javaPackageFromFolder($TEST_SRC)};
 
-#foreach( $import in $java.imports($entity.attributes) )
-import $import;
-#end
 import java.sql.SQLException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +22,6 @@ import org.testng.annotations.Test;
 import pg.cui.pwrmoja.MigratorApplication;
 import ${ENTITY_PKG}.${entity.name};
 
-/**
- * Tests for ${entity.name}DAO
- */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = MigratorApplication.class)
 @TestPropertySource(locations = "classpath:application_test.properties")
 @Slf4j
@@ -96,7 +90,7 @@ public class ${entity.name}DAOTest extends AbstractTestNGSpringContextTests {
     	Assert.assertNotNull(${uncapitalizedEntityName}2);
 #if ( $entity.hasAutoIncrementedKey() == false )
 #foreach( $attribute in $entity.keyAttributes )
-		Assert.assertTrue(  ${uncapitalizedEntityName}.${attribute.getter}.equals($keyValues.getValue($attribute.name)) ) ;
+		Assert.assertTrue(  ${uncapitalizedEntityName}.${attribute.getter}().equals($keyValues.getValue($attribute.name)) ) ;
 #end
 #end
     	Assert.assertTrue( dao.exists(${uncapitalizedEntityName}2) ) ;
