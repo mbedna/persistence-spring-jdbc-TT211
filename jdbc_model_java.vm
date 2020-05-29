@@ -48,12 +48,4 @@ public class $entity.name implements Serializable {
     // DB : $field.databaseName $field.databaseType $field.databaseComment
     private $field.formattedType(0) $field.formattedName(0)#if($field.hasInitialValue()) = ${field.initialValue} #end;
 #end
-#*
-    //----------------------------------------------------------------------
-    // ENTITY LINKS ( RELATIONSHIP )
-    //----------------------------------------------------------------------
-#foreach( $link in $entity.selectedLinks )
-    private $link.formattedType(0) $link.formattedName(0);
-#end
-*#
 }

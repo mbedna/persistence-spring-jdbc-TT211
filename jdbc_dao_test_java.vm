@@ -47,7 +47,7 @@ public class ${entity.name}DAOTest extends AbstractTestNGSpringContextTests {
 			;
 
 	@BeforeClass
-	public static void init() {
+	public void init() {
 		this.jdbcTemplate.execute(CREATE_TABLE) ;
 	}
 
@@ -96,7 +96,7 @@ public class ${entity.name}DAOTest extends AbstractTestNGSpringContextTests {
     	Assert.assertNotNull(${uncapitalizedEntityName}2);
 #if ( $entity.hasAutoIncrementedKey() == false )
 #foreach( $attribute in $entity.keyAttributes )
-		Assert.assertTrue( $keyValues.getValue($attribute.name).compareTo("${uncapitalizedEntityName}2") ) ;
+		Assert.assertTrue(  ${uncapitalizedEntityName}.${attribute.getter}.equals($keyValues.getValue($attribute.name)) ) ;
 #end
 #end
     	Assert.assertTrue( dao.exists(${uncapitalizedEntityName}2) ) ;
